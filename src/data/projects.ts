@@ -84,6 +84,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    name: 'EE-6314-RTOS',
+    slug: 'ee-6314-rtos',
+    url: 'https://github.com/karangandhi-projects/EE-6314-RTOS',
+    summary: 'A real-time operating system built from scratch on the TI Tiva TM4C123G (ARM Cortex-M4).',
+    focus:
+      'Implements the core RTOS primitives — task scheduling, context switching, semaphores/mutexes and IPC — to understand RTOS internals from the ground up.',
+    icon: 'arm',
+    highlights: ['Preemptive scheduler', 'Context switching', 'Semaphores / mutexes', 'Shell / CLI'],
+    tags: ['C', 'TI Tiva TM4C123G', 'ARM Cortex-M4', 'RTOS', 'Scheduling'],
+    featured: true,
+  },
+  {
     name: 'bluetooth-audio-manager-linux',
     slug: 'bluetooth-audio-manager-linux',
     url: 'https://github.com/karangandhi-projects/bluetooth-audio-manager-linux',

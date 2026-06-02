@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { projects } from './projects';
 import { skills } from './skills';
-import { experience } from './experience';
+import { experiences } from './experience';
+import { education } from './education';
 import { nowItems } from './now';
 import { links } from './links';
 
@@ -38,11 +39,25 @@ describe('skills data', () => {
 });
 
 describe('experience data', () => {
-  it('has company, role, dates and areas', () => {
-    expect(experience.company).toBeTruthy();
-    expect(experience.role).toBeTruthy();
-    expect(experience.dates).toBeTruthy();
-    expect(experience.areas.length).toBeGreaterThan(0);
+  it('has at least one entry with company, role, dates and areas', () => {
+    expect(experiences.length).toBeGreaterThan(0);
+    for (const e of experiences) {
+      expect(e.company).toBeTruthy();
+      expect(e.role).toBeTruthy();
+      expect(e.dates).toBeTruthy();
+      expect(e.areas.length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe('education data', () => {
+  it('each entry has school, degree and dates', () => {
+    expect(education.length).toBeGreaterThan(0);
+    for (const e of education) {
+      expect(e.school).toBeTruthy();
+      expect(e.degree).toBeTruthy();
+      expect(e.dates).toBeTruthy();
+    }
   });
 });
 

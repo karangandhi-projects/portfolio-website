@@ -1,0 +1,61 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const progression = [
+  { title: 'Prompt engineering', desc: 'Precise instructions to get reliable, useful output.' },
+  { title: 'Context engineering', desc: 'Feeding the right specs, code, and constraints to the model.' },
+  { title: 'Harness engineering', desc: 'Repeatable agent workflows wrapped around a real codebase.' },
+];
+
+const appliedTo = [
+  'Spec-driven development',
+  'Requirements & architecture docs',
+  'Test plans',
+  'Debugging',
+  'Code review',
+  'Product docs',
+];
+---
+<section id="ai" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat ai-native-workflow.md" title="AI-Assisted Engineering" />
+
+    <div style="max-width:760px; margin-bottom:22px;">
+      <p style="margin-bottom:14px;">
+        I'm exploring how to build embedded products with an <strong>AI-native workflow</strong> —
+        progressing from prompt engineering, to context engineering, to harness engineering, to create a
+        professional, repeatable way of working with AI on real firmware.
+      </p>
+      <p class="muted">
+        I use <span class="mono accent">Claude</span> and <span class="mono accent">Codex</span> across
+        spec-driven development, requirements and architecture docs, test plans, debugging, code review,
+        and product documentation.
+      </p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:18px;">
+      {progression.map((p, i) => (
+        <div class="skill">
+          <h4 class="mono"><span class="out">{`0${i + 1}`}</span> {p.title}</h4>
+          <p class="muted" style="font-size:13px;">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="now-card">
+      <div class="now-meta mono"># where I apply it</div>
+      <div style="margin:4px 0 12px;">
+        {appliedTo.map((a) => <span class="tag">{a}</span>)}
+      </div>
+      <p class="muted" style="font-size:13.5px;">
+        Example in practice: my
+        <a href="https://github.com/karangandhi-projects/ble-environmental-sensor-node" target="_blank" rel="noopener">BLE environmental sensor node</a>
+        was built spec-first with agent-buildable documentation.
+      </p>
+      <p class="why" style="margin-top:14px;">
+        AI speeds up execution — but hardware validation, engineering judgment, design decisions, and the
+        ideas themselves stay human.
+      </p>
+    </div>
+  </div>
+</section>

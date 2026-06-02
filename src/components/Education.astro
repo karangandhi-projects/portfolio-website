@@ -1,0 +1,23 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { education } from '../data/education';
+---
+<section id="education" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat education.md" title="Education" />
+    <div class="grid-2">
+      {education.map((e) => (
+        <div class="card">
+          <div class="card-bar">
+            <span class="path">{e.school}</span>
+            <span class="gh mono" style="margin-left:auto; font-size:12px;">{e.dates}</span>
+          </div>
+          <div class="card-body">
+            <h3 style="font-size:15px; margin-bottom:6px;">{e.degree}</h3>
+            {e.detail && <p>{e.detail}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

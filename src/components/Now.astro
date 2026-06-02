@@ -1,0 +1,29 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import Icon from './Icon.astro';
+import { nowItems, nowUpdated } from '../data/now';
+
+const statusClass: Record<string, string> = {
+  exploring: 'status status-exploring',
+  building: 'status status-building',
+  planning: 'status status-planning',
+};
+---
+<section id="now" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat now.md" title="Now / Currently Exploring" />
+    <div class="now-card">
+      <div class="now-meta"># last updated: {nowUpdated} · {nowItems.length} active threads</div>
+      {nowItems.map((item) => (
+        <div class="now-item">
+          <span class="ico"><Icon name={item.icon} size={22} /></span>
+          <div>
+            <div class="t">{item.title}</div>
+            <div class="d">{item.description}</div>
+          </div>
+          <div class="right"><span class={statusClass[item.status]}>{item.status}</span></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

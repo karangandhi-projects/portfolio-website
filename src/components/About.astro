@@ -1,0 +1,25 @@
+---
+import SectionHeader from './SectionHeader.astro';
+---
+<section id="about" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat about.md" title="About" />
+    <div style="max-width:740px;">
+      <p style="margin-bottom:14px;">
+        I'm an embedded firmware engineer with production experience from Qualcomm, where I worked on
+        modem software and power management. I care about the low-level layer — how firmware, drivers,
+        and hardware actually behave — and I build projects to deepen that understanding.
+      </p>
+      <p style="margin-bottom:14px;">
+        My work spans STM32/FreeRTOS firmware, Linux kernel drivers, CAN and BLE. Each project is
+        structured like real engineering: requirements, architecture, phased development, debugging
+        notes, and a validation plan — not just a demo.
+      </p>
+      <p class="muted">
+        I also explore AI-assisted embedded workflows (harnesses, MCP, spec-driven development) as a
+        supporting discipline — a way to improve documentation, planning, testing and debugging, while
+        my core identity stays embedded systems.
+      </p>
+    </div>
+  </div>
+</section>

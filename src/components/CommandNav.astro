@@ -1,0 +1,42 @@
+---
+import { commands } from '../data/nav';
+---
+<div class="cmd-nav">
+  <div class="chips">
+    {commands.map((c) => (
+      <a class="chip" href={c.target} {...(c.target.startsWith('#') ? {} : { target: '_blank', rel: 'noopener' })}>{c.label}</a>
+    ))}
+  </div>
+  <label class="cmd-input-wrap" for="cmd-input">
+    <span class="prompt mono" aria-hidden="true">$</span>
+    <input
+      id="cmd-input"
+      class="cmd-input"
+      type="text"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="type a command (e.g. projects) and press Enter"
+      aria-label="Terminal command navigation"
+    />
+  </label>
+</div>
+
+<script>
+  import { resolveCommand } from '../lib/commands';
+  const input = document.getElementById('cmd-input') as HTMLInputElement | null;
+  input?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const target = resolveCommand(input.value);
+    if (!target) {
+      input.value = '';
+      input.placeholder = 'command not found — try: projects, about, contact';
+      return;
+    }
+    input.value = '';
+    if (target.startsWith('#')) {
+      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = target;
+    }
+  });
+</script>

@@ -1,8 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import EngineeringStyle from '../components/EngineeringStyle.astro';
+import Experience from '../components/Experience.astro';
+import Now from '../components/Now.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 <BaseLayout>
-  <main class="container">
-    <p class="mono accent" style="padding:40px 0;">karan@embedded:~$ scaffold ok</p>
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <EngineeringStyle />
+    <Experience />
+    <Now />
+    <Contact />
   </main>
+  <Footer />
 </BaseLayout>

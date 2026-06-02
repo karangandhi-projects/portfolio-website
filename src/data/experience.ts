@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
       'Debugged complex power, timing, and cross-subsystem integration issues; validated initialization flows and low-power transitions through on-target integration testing.',
       'Contributed to firmware releases deployed in commercial modem products; worked across multiple sub-teams to understand the full system.',
     ],
-    areas: ['LTE / 5G modem firmware', 'RTOS', 'Power management', 'On-target integration testing', 'Python diagnostics', 'Trace32'],
+    areas: ['LTE / 5G modem firmware', 'RTOS', 'Power management', 'On-target integration testing', 'Python diagnostics', 'Trace32', 'JIRA'],
   },
   {
     company: 'Independent / Self-Directed',

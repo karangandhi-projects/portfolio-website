@@ -1,60 +1,75 @@
 ---
 import SectionHeader from './SectionHeader.astro';
 
-const progression = [
-  { title: 'Prompt engineering', desc: 'Precise instructions to get reliable, useful output.' },
-  { title: 'Context engineering', desc: 'Feeding the right specs, code, and constraints to the model.' },
-  { title: 'Harness engineering', desc: 'Repeatable agent workflows wrapped around a real codebase.' },
+const lifecycle = [
+  'Spec-driven development', 'Architecture', 'Design decisions', 'TDD', 'Implementation',
+  'Simulation', 'Hardware-in-the-Loop validation', 'ML validation', 'Verification',
+  'Debugging', 'Operations', 'Engineering reporting',
 ];
 
-const appliedTo = [
-  'Spec-driven development',
-  'Requirements & architecture docs',
-  'Test plans',
-  'Debugging',
-  'Code review',
-  'Product docs',
+const agentRoles = [
+  { role: 'Principal manager', desc: 'defines the goal & success criteria' },
+  { role: 'Team leads', desc: 'break the work into phases' },
+  { role: 'Implementation agents', desc: 'build features' },
+  { role: 'Test agents', desc: 'validate behavior' },
+  { role: 'Review agents', desc: 'check correctness' },
+  { role: 'Reporting agents', desc: 'summarize progress, risks & blockers' },
+];
+
+const discipline = [
+  'Requirements traceability', 'Interface contracts', 'Test coverage', 'HIL procedures',
+  'Validation evidence', 'Debugging playbooks', 'Operational feedback loops', 'Docs aligned with code',
 ];
 ---
 <section id="ai" class="section">
   <div class="container">
     <SectionHeader cmd="cat ai-native-workflow.md" title="AI-Assisted Engineering" />
 
-    <div style="max-width:760px; margin-bottom:22px;">
+    <div class="card" style="padding: 22px 24px; margin-bottom:16px;">
       <p style="margin-bottom:14px;">
-        I'm exploring how to build embedded products with an <strong>AI-native workflow</strong> —
-        progressing from prompt engineering, to context engineering, to harness engineering, to create a
-        professional, repeatable way of working with AI on real firmware.
+        I'm exploring <strong>AI-native workflows for embedded software development</strong> — where AI is
+        integrated across the full engineering lifecycle, not just code generation. I work with
+        <span class="mono accent">Claude</span> and <span class="mono accent">Codex</span>, progressing
+        from prompt engineering, to context engineering, to harness engineering.
       </p>
-      <p class="muted">
-        I use <span class="mono accent">Claude</span> and <span class="mono accent">Codex</span> across
-        spec-driven development, requirements and architecture docs, test plans, debugging, code review,
-        and product documentation.
-      </p>
+      <div>
+        {lifecycle.map((l) => <span class="tag">{l}</span>)}
+      </div>
     </div>
 
-    <div class="grid-3" style="margin-bottom:18px;">
-      {progression.map((p, i) => (
-        <div class="skill">
-          <h4 class="mono"><span class="out">{`0${i + 1}`}</span> {p.title}</h4>
-          <p class="muted" style="font-size:13px;">{p.desc}</p>
+    <div class="grid-2" style="gap:16px; margin-bottom:16px; align-items:start;">
+      <div class="card" style="padding: 20px 22px;">
+        <h3 style="font-size:15px; margin-bottom:4px;">Agentic engineering organization</h3>
+        <p class="muted" style="font-size:13px; margin-bottom:12px;">
+          A project where AI agents operate like a structured embedded engineering team:
+        </p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+          {agentRoles.map((a) => (
+            <li style="font-size:13.5px;"><span class="mono accent">{a.role}</span> <span class="muted">— {a.desc}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="card" style="padding: 20px 22px;">
+        <h3 style="font-size:15px; margin-bottom:4px;">Beyond code generation</h3>
+        <p class="muted" style="font-size:13px; margin-bottom:12px;">
+          The goal is to support the engineering discipline around embedded development:
+        </p>
+        <div>
+          {discipline.map((d) => <span class="tag">{d}</span>)}
         </div>
-      ))}
+      </div>
     </div>
 
     <div class="now-card">
-      <div class="now-meta mono"># where I apply it</div>
-      <div style="margin:4px 0 12px;">
-        {appliedTo.map((a) => <span class="tag">{a}</span>)}
-      </div>
       <p class="muted" style="font-size:13.5px;">
         Example in practice: my
         <a href="https://github.com/karangandhi-projects/ble-environmental-sensor-node" target="_blank" rel="noopener">BLE environmental sensor node</a>
         was built spec-first with agent-buildable documentation.
       </p>
       <p class="why" style="margin-top:14px;">
-        AI speeds up execution — but hardware validation, engineering judgment, design decisions, and the
-        ideas themselves stay human.
+        AI-native embedded engineering means combining AI-assisted execution with real embedded engineering
+        judgment — timing, memory, hardware constraints, RTOS behavior, drivers, communication interfaces,
+        failure modes, verification, and system validation. The ideas and the judgment stay human.
       </p>
     </div>
   </div>

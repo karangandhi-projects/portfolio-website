@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { links } from '../data/links';
+---
+<header class="site-header">
+  <div class="container inner">
+    <a href="#top" class="mono accent" style="font-weight:600;">karan@embedded</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <div class="header-icons">
+      <a href={links.github} aria-label="GitHub" target="_blank" rel="noopener"><Icon name="github" size={18} /></a>
+      <a href={links.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener"><Icon name="linkedin" size={18} /></a>
+    </div>
+  </div>
+</header>

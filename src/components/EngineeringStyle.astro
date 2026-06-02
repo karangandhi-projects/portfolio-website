@@ -1,0 +1,26 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const steps = [
+  { n: '01', title: 'Requirements', desc: 'Start from what the system must do, written down.' },
+  { n: '02', title: 'Architecture', desc: 'Define modules, interfaces and data flow before code.' },
+  { n: '03', title: 'Design decisions', desc: 'Record trade-offs so choices are explainable later.' },
+  { n: '04', title: 'Phased build', desc: 'Ship in small, working increments.' },
+  { n: '05', title: 'Validation', desc: 'Plan how each behavior is proven correct.' },
+  { n: '06', title: 'Debug observability', desc: 'Build in logging/CLI so the system can be inspected.' },
+  { n: '07', title: 'Documentation', desc: 'Treat docs as an engineering output, not an afterthought.' },
+];
+---
+<section id="engineering" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat engineering-style.md" title="Engineering Style" />
+    <div class="grid-3">
+      {steps.map((s) => (
+        <div class="skill">
+          <h4 class="mono"><span class="out">{s.n}</span> {s.title}</h4>
+          <p class="muted" style="font-size:13px;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

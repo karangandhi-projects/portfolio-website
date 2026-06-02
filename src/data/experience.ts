@@ -24,11 +24,12 @@ export const experiences: Experience[] = [
     areas: ['LTE / 5G modem firmware', 'RTOS', 'Power management', 'On-target integration testing', 'Python diagnostics', 'Trace32'],
   },
   {
-    company: 'Family Business',
-    role: 'Operations — non-technical role',
+    company: 'Independent / Self-Directed',
+    role: 'Embedded & AI-Assisted Engineering Projects',
     dates: '2023 – Present',
+    icon: 'git',
     summary:
-      'Supported the family business in a non-technical capacity while continuing to build embedded and AI-assisted engineering projects on the side. Now actively returning to firmware / embedded engineering full-time.',
-    areas: ['Operations', 'Self-directed embedded projects'],
+      'Building a portfolio of hands-on embedded projects — STM32 / FreeRTOS firmware, Linux drivers, CAN and BLE — each structured with architecture, debugging notes, and a validation plan. In parallel, developing an AI-native embedded workflow (spec-driven development, harness engineering). Actively pursuing firmware / embedded software engineering roles.',
+    areas: ['STM32 / FreeRTOS', 'Linux drivers', 'CAN / BLE', 'AI-assisted workflows'],
   },
 ];

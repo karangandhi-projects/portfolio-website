@@ -1,0 +1,24 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import Icon from './Icon.astro';
+import { experience } from '../data/experience';
+---
+<section id="experience" class="section">
+  <div class="container">
+    <SectionHeader cmd="cat experience.md" title="Experience" />
+    <div class="card">
+      <div class="card-bar">
+        <span class="ico" style="color:#c9d1d9; display:inline-flex;"><Icon name="qualcomm" size={18} /></span>
+        <span class="path">{experience.company}</span>
+        <span class="gh mono" style="margin-left:auto; font-size:12px;">{experience.dates}</span>
+      </div>
+      <div class="card-body">
+        <h3 style="font-size:16px; margin-bottom:6px;">{experience.role}</h3>
+        <p>{experience.summary}</p>
+        <div style="margin-top:12px;">
+          {experience.areas.map((a) => <span class="tag">{a}</span>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

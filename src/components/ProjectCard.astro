@@ -4,13 +4,11 @@ import type { Project } from '../data/projects';
 interface Props { project: Project; }
 const { project } = Astro.props;
 ---
-<article class="card">
+<a class="card" href={project.url} target="_blank" rel="noopener" aria-label={`${project.name} — open GitHub repository`}>
   <div class="card-bar">
     <span class="ico" style="color:#c9d1d9; display:inline-flex;"><Icon name={project.icon} size={18} /></span>
     <span class="path"><span class="dir">~/</span>{project.name}</span>
-    <a class="gh" href={project.url} target="_blank" rel="noopener" aria-label={`${project.name} on GitHub`}>
-      <Icon name="github" size={16} />
-    </a>
+    <span class="gh" aria-hidden="true"><Icon name="github" size={16} /></span>
   </div>
   <div class="card-body">
     <p>{project.summary}</p>
@@ -19,4 +17,4 @@ const { project } = Astro.props;
       {project.tags.map((t) => <span class="tag">{t}</span>)}
     </div>
   </div>
-</article>
+</a>

@@ -45,6 +45,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-mono); font-size: 15px; margin-bottom: 22px;
 }
 .sec-head h2 { font-family: var(--font-sans); font-size: 22px; letter-spacing: -0.01em; font-weight: 700; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* buttons */
 .btn {
@@ -75,8 +76,8 @@ a:hover { text-decoration: underline; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* cards */
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform .18s, border-color .18s; }
-.card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.card { display: block; color: inherit; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform .18s, border-color .18s; }
+.card:hover { border-color: var(--accent); transform: translateY(-3px); text-decoration: none; }
 .card-bar { display: flex; align-items: center; gap: 9px; padding: 11px 15px; background: var(--surface-2); border-bottom: 1px solid var(--border); font-family: var(--font-mono); }
 .card-bar .path { font-size: 13.5px; } .card-bar .path .dir { color: var(--accent); }
 .card-bar .gh { margin-left: auto; color: var(--muted); display: inline-flex; }

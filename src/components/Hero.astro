@@ -1,0 +1,31 @@
+---
+import TerminalWindow from './TerminalWindow.astro';
+import Prompt from './Prompt.astro';
+import CommandNav from './CommandNav.astro';
+import { links } from '../data/links';
+---
+<section id="top" class="section">
+  <div class="container">
+    <TerminalWindow>
+      <div><Prompt cmd="whoami" /></div>
+      <h1 style="font-size:38px; margin:12px 0 4px;">Embedded Firmware Engineer<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="comment" style="font-size:14px;"># ex-Qualcomm · STM32 / FreeRTOS · Linux drivers · BLE / CAN</p>
+      <CommandNav />
+    </TerminalWindow>
+
+    <div class="quicklook">
+      <div class="lbl">⚡ In 10 seconds</div>
+      <h3>Firmware engineer with Qualcomm experience who builds &amp; documents real low-level systems.</h3>
+      <p>
+        Worked on modem software at Qualcomm. Now building hands-on STM32, Linux-driver, CAN and BLE
+        projects — each with architecture, debugging notes and a validation plan. Also exploring TinyML
+        and AI-assisted embedded engineering workflows.
+      </p>
+      <div class="row">
+        <a class="btn btn-primary" href="#projects">↓ See projects</a>
+        <a class="btn btn-ghost" href={links.resume} target="_blank" rel="noopener">Download résumé</a>
+        <a class="btn btn-ghost" href={`mailto:${links.email}`}>Email me</a>
+      </div>
+    </div>
+  </div>
+</section>

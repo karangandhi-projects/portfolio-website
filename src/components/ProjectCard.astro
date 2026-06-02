@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import type { Project } from '../data/projects';
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<article class="card">
+  <div class="card-bar">
+    <span class="ico" style="color:#c9d1d9; display:inline-flex;"><Icon name={project.icon} size={18} /></span>
+    <span class="path"><span class="dir">~/</span>{project.name}</span>
+    <a class="gh" href={project.url} target="_blank" rel="noopener" aria-label={`${project.name} on GitHub`}>
+      <Icon name="github" size={16} />
+    </a>
+  </div>
+  <div class="card-body">
+    <p>{project.summary}</p>
+    <p class="why">Why it matters: {project.focus}</p>
+    <div style="margin-top:12px;">
+      {project.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </div>
+</article>

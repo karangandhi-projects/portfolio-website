@@ -1,0 +1,17 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+const ordered = [...featured, ...others];
+---
+<section id="projects" class="section">
+  <div class="container">
+    <SectionHeader cmd="ls projects/ --featured" title="Featured Projects" />
+    <div class="grid-2">
+      {ordered.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </div>
+</section>

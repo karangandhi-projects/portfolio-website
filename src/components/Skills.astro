@@ -1,0 +1,19 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { skills } from '../data/skills';
+---
+<section id="skills" class="section">
+  <div class="container">
+    <SectionHeader cmd="skills --grouped" title="Skills" />
+    <div class="grid-3">
+      {skills.map((cat) => (
+        <div class="skill">
+          <h4>{cat.title}</h4>
+          <ul>
+            {cat.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

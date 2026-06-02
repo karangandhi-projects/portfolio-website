@@ -10,7 +10,7 @@ export const nowUpdated = 'this week';
 export const nowItems: NowItem[] = [
   {
     title: 'TinyML on microcontrollers',
-    description: 'Running tiny models on STM32 — quantization and on-device inference.',
+    description: 'Running tiny models on ESP32 — quantization and on-device inference.',
     status: 'exploring',
     icon: 'tensorflow',
   },

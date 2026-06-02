@@ -1,0 +1,14 @@
+---
+interface Props { class?: string; }
+const { class: cls = '' } = Astro.props;
+---
+<div class:list={['term', cls]}>
+  <div class="term-bar" aria-hidden="true">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+  </div>
+  <div class="term-body">
+    <slot />
+  </div>
+</div>

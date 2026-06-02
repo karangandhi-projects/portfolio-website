@@ -1,0 +1,5 @@
+---
+interface Props { cmd?: string; }
+const { cmd } = Astro.props;
+---
+<span class="mono"><span class="prompt">karan@embedded</span>:<span class="out">~</span><span class="prompt">$</span>{cmd ? ` ${cmd}` : ' '}<slot /></span>

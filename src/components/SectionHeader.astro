@@ -1,0 +1,9 @@
+---
+import Prompt from './Prompt.astro';
+interface Props { cmd: string; title: string; }
+const { cmd, title } = Astro.props;
+---
+<div class="sec-head">
+  <Prompt cmd={cmd} />
+  <h2>{title}</h2>
+</div>

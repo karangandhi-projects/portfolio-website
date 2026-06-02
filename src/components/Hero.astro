@@ -2,7 +2,18 @@
 import TerminalWindow from './TerminalWindow.astro';
 import Prompt from './Prompt.astro';
 import CommandNav from './CommandNav.astro';
+import Icon from './Icon.astro';
 import { links } from '../data/links';
+
+const heroLogos = [
+  { name: 'qualcomm', label: 'Qualcomm' },
+  { name: 'linux', label: 'Linux' },
+  { name: 'stm32', label: 'STMicroelectronics' },
+  { name: 'arm', label: 'ARM' },
+  { name: 'bluetooth', label: 'Bluetooth' },
+  { name: 'c', label: 'C' },
+  { name: 'anthropic', label: 'AI-assisted engineering' },
+];
 ---
 <section id="top" class="section">
   <div class="container">
@@ -10,6 +21,11 @@ import { links } from '../data/links';
       <div><Prompt cmd="whoami" /></div>
       <h1 style="font-size:38px; margin:12px 0 4px;">Embedded Firmware Engineer<span class="cursor" aria-hidden="true"></span></h1>
       <p class="comment" style="font-size:14px;"># ex-Qualcomm · microcontrollers · STM32 / FreeRTOS · Linux drivers · BLE / CAN · AI-assisted engineering</p>
+      <div class="hero-logos">
+        {heroLogos.map((logo) => (
+          <span class="ico"><Icon name={logo.name} size={22} label={logo.label} /></span>
+        ))}
+      </div>
       <CommandNav />
     </TerminalWindow>
 

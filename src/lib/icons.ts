@@ -10,6 +10,8 @@ import {
   siTensorflow,
   siAnthropic,
   siEspressif,
+  siRaspberrypi,
+  siArm,
 } from 'simple-icons';
 import type { SimpleIcon } from 'simple-icons';
 
@@ -25,4 +27,6 @@ export const icons: Record<string, SimpleIcon> = {
   tensorflow: siTensorflow,
   anthropic: siAnthropic,
   espressif: siEspressif,
+  raspberrypi: siRaspberrypi,
+  arm: siArm,
 };

@@ -32,4 +32,10 @@ export const nowItems: NowItem[] = [
     status: 'building',
     icon: 'anthropic',
   },
+  {
+    title: 'Learning Rust',
+    description: 'Ownership, borrowing, and embedded Rust for safer firmware.',
+    status: 'exploring',
+    icon: 'rust',
+  },
 ];

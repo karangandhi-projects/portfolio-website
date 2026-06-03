@@ -12,6 +12,7 @@ import {
   siEspressif,
   siRaspberrypi,
   siArm,
+  siRust,
 } from 'simple-icons';
 import type { SimpleIcon } from 'simple-icons';
 
@@ -29,4 +30,5 @@ export const icons: Record<string, SimpleIcon> = {
   espressif: siEspressif,
   raspberrypi: siRaspberrypi,
   arm: siArm,
+  rust: siRust,
 };

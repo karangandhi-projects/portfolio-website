@@ -64,7 +64,7 @@ describe('education data', () => {
 describe('now data', () => {
   it('each item has a valid status', () => {
     for (const n of nowItems) {
-      expect(['exploring', 'building', 'planning']).toContain(n.status);
+      expect(['exploring', 'building', 'planning', 'learning']).toContain(n.status);
       expect(n.icon).toBeTruthy();
       expect(n.title).toBeTruthy();
     }

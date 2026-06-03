@@ -1,7 +1,7 @@
 export type NowItem = {
   title: string;
   description: string;
-  status: 'exploring' | 'building' | 'planning';
+  status: 'exploring' | 'building' | 'planning' | 'learning';
   icon: string; // key into src/lib/icons.ts
 };
 
@@ -33,9 +33,9 @@ export const nowItems: NowItem[] = [
     icon: 'anthropic',
   },
   {
-    title: 'Learning Rust',
+    title: 'Rust',
     description: 'Ownership, borrowing, and embedded Rust for safer firmware.',
-    status: 'exploring',
+    status: 'learning',
     icon: 'rust',
   },
 ];

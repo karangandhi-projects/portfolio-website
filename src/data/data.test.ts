@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { readdirSync } from 'node:fs';
 import { projects } from './projects';
 import { skills } from './skills';
 import { experiences } from './experience';
@@ -77,5 +78,18 @@ describe('links data', () => {
     expect(links.linkedin).toMatch(/^https:\/\//);
     expect(links.email).toContain('@');
     expect(links.resume).toBe('/resume.pdf');
+  });
+});
+
+describe('case studies', () => {
+  it('every case study file matches a project slug', () => {
+    const slugs = new Set(projects.map((p) => p.slug));
+    const dir = new URL('../content/case-studies/', import.meta.url);
+    const files = readdirSync(dir).filter((f: string) => f.endsWith('.md'));
+    expect(files.length).toBeGreaterThan(0);
+    for (const f of files) {
+      const slug = f.replace(/\.md$/, '');
+      expect(slugs.has(slug)).toBe(true);
+    }
   });
 });

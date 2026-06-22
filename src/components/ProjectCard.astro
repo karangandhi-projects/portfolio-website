@@ -1,14 +1,28 @@
 ---
 import Icon from './Icon.astro';
 import type { Project } from '../data/projects';
-interface Props { project: Project; }
-const { project } = Astro.props;
+interface Props { project: Project; caseStudyPath?: string; }
+const { project, caseStudyPath } = Astro.props;
+
+const href = caseStudyPath ?? project.url;
+const isExternal = !caseStudyPath;
+const ariaLabel = caseStudyPath
+  ? `${project.name} — read case study`
+  : `${project.name} — open GitHub repository`;
 ---
-<a class="card" href={project.url} target="_blank" rel="noopener" aria-label={`${project.name} — open GitHub repository`}>
+<a
+  class="card"
+  href={href}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener' : undefined}
+  aria-label={ariaLabel}
+>
   <div class="card-bar">
     <span class="ico" style="color:#c9d1d9; display:inline-flex;"><Icon name={project.icon} size={18} /></span>
     <span class="path"><span class="dir">~/</span>{project.name}</span>
-    <span class="gh" aria-hidden="true"><Icon name="github" size={16} /></span>
+    {caseStudyPath
+      ? <span class="cs-badge">case study →</span>
+      : <span class="gh" aria-hidden="true"><Icon name="github" size={16} /></span>}
   </div>
   <div class="card-body">
     <p>{project.summary}</p>

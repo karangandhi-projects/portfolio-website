@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 426" role="img" aria-label="Firmware layering diagram: the Application Core sits on top of Services and Interfaces, which sit on top of the ESP-IDF Platform layer.">
+  <defs>
+    <marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#3fb950"/>
+    </marker>
+    <style>
+      text{font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+      .layer{fill:#3fb950;font-size:14.5px;font-weight:600}
+      .item{fill:#8b949e;font-size:11.5px}
+      .wire{stroke:#3fb950;stroke-width:1.6;fill:none}
+    </style>
+  </defs>
+
+  <rect x="0.75" y="0.75" width="718.5" height="424.5" rx="12" fill="#0d1117" stroke="#1f2630" stroke-width="1.5"/>
+
+  <!-- Application Core -->
+  <rect x="30" y="22" width="660" height="96" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="30" y="22" width="3.5" height="96" fill="#3fb950" rx="2"/>
+  <text class="layer" x="52" y="52">Application Core</text>
+  <text class="item" x="52" y="78">State machine · command handling · telemetry scheduling</text>
+  <text class="item" x="52" y="99">Display tick · page rotation</text>
+
+  <line class="wire" x1="360" y1="118" x2="360" y2="144" marker-end="url(#ah2)"/>
+
+  <!-- Services / Interfaces -->
+  <rect x="30" y="146" width="660" height="120" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="30" y="146" width="3.5" height="120" fill="#3fb950" rx="2"/>
+  <text class="layer" x="52" y="176">Services / Interfaces</text>
+  <text class="item" x="52" y="202">BLE Environmental Service — NimBLE GATT server</text>
+  <text class="item" x="52" y="222">Sensor Provider Interface — simulated -&gt; BME280 (P9)</text>
+  <text class="item" x="52" y="242">Storage Config Interface — NVS</text>
+  <text class="item" x="52" y="260">Display Interface — SSD1306 over I2C</text>
+
+  <line class="wire" x1="360" y1="266" x2="360" y2="292" marker-end="url(#ah2)"/>
+
+  <!-- Platform -->
+  <rect x="30" y="294" width="660" height="110" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="30" y="294" width="3.5" height="110" fill="#3fb950" rx="2"/>
+  <text class="layer" x="52" y="324">Platform</text>
+  <text class="item" x="52" y="350">ESP-IDF FreeRTOS</text>
+  <text class="item" x="52" y="370">NimBLE host / controller integration</text>
+  <text class="item" x="52" y="390">NVS · GPIO · I2C · timers · logging</text>
+</svg>

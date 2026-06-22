@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 885 330" role="img" aria-label="System context diagram: the Android app communicates with the ESP32-C3 BLE_ENV_NODE over BLE GATT; the node drives an SSD1306 OLED over I2C; the app exports CSV to the ML training pipeline.">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#3fb950"/>
+    </marker>
+    <style>
+      text{font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+      .title{fill:#e6e9ef;font-size:15px;font-weight:600}
+      .sub{fill:#8b949e;font-size:11.5px}
+      .edge{fill:#3fb950;font-size:10.5px}
+      .wire{stroke:#3fb950;stroke-width:1.6;fill:none}
+    </style>
+  </defs>
+
+  <rect x="0.75" y="0.75" width="883.5" height="328.5" rx="12" fill="#0d1117" stroke="#1f2630" stroke-width="1.5"/>
+
+  <!-- Android App -->
+  <rect x="22" y="58" width="190" height="104" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="22" y="58" width="3.5" height="104" fill="#3fb950" rx="2"/>
+  <text class="title" x="117" y="96" text-anchor="middle">Android App</text>
+  <text class="sub" x="117" y="118" text-anchor="middle">BleEnvNode.apk</text>
+  <text class="sub" x="117" y="136" text-anchor="middle">Kotlin · Compose</text>
+
+  <!-- ESP32-C3 -->
+  <rect x="345" y="58" width="200" height="104" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="345" y="58" width="3.5" height="104" fill="#3fb950" rx="2"/>
+  <text class="title" x="445" y="90" text-anchor="middle">ESP32-C3</text>
+  <text class="sub" x="445" y="110" text-anchor="middle">BLE_ENV_NODE</text>
+  <text class="sub" x="445" y="128" text-anchor="middle">GATT Server /</text>
+  <text class="sub" x="445" y="145" text-anchor="middle">Peripheral</text>
+
+  <!-- OLED -->
+  <rect x="678" y="58" width="186" height="104" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="678" y="58" width="3.5" height="104" fill="#3fb950" rx="2"/>
+  <text class="title" x="771" y="96" text-anchor="middle" font-size="14">SSD1306 OLED</text>
+  <text class="sub" x="771" y="118" text-anchor="middle">0.42" · 72×40</text>
+  <text class="sub" x="771" y="136" text-anchor="middle">addr 0x3C</text>
+
+  <!-- A <-> B -->
+  <line class="wire" x1="216" y1="110" x2="341" y2="110" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="edge" x="278" y="100" text-anchor="middle">BLE · GATT v2</text>
+  <text class="edge" x="278" y="127" text-anchor="middle">6 characteristics</text>
+
+  <!-- B <-> C -->
+  <line class="wire" x1="549" y1="110" x2="674" y2="110" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="edge" x="611" y="100" text-anchor="middle">I2C · 400 kHz</text>
+  <text class="edge" x="611" y="127" text-anchor="middle">SDA=5 · SCL=6</text>
+
+  <!-- A -> ML (down) -->
+  <line class="wire" x1="117" y1="162" x2="117" y2="246" marker-end="url(#ah)"/>
+  <text class="edge" x="127" y="208" text-anchor="start">CSV export</text>
+
+  <!-- ML Training -->
+  <rect x="22" y="246" width="232" height="66" rx="10" fill="#11161d" stroke="#1f2630" stroke-width="1.5"/>
+  <rect x="22" y="246" width="3.5" height="66" fill="#58a6ff" rx="2"/>
+  <text class="title" x="138" y="276" text-anchor="middle" font-size="14">ML Training</text>
+  <text class="sub" x="138" y="296" text-anchor="middle">ml/train_classifier.py</text>
+</svg>

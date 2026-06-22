@@ -25,47 +25,13 @@ Functional requirements (FR-001 through FR-015) cover the full arc: BLE advertis
 
 The system is a BLE peripheral/GATT server exchanging data with a phone-side central over a custom Environmental Node Service. The OLED is a local output surface that surfaces BLE state and telemetry without requiring a connected central.
 
-```text
-+-------------------+        BLE         +-------------------------+        I2C        +-------------------+
-| Android App       | <----------------> | ESP32-C3 BLE_ENV_NODE  | <---------------> | SSD1306 0.42" OLED|
-| BleEnvNode.apk    |   GATT v2 profile  | GATT Server/Peripheral |   SDA=GPIO5       | 72x40, addr 0x3C  |
-| (Kotlin/Compose)  |   6 characteristics|                        |   SCL=GPIO6       +-------------------+
-+-------------------+                    +-------------------------+
-        |
-        | CSV export
-        v
-+-------------------+
-| ML Training       |
-| ml/train_         |
-| classifier.py     |
-+-------------------+
-```
+![System context: the Android app over BLE/GATT to the ESP32-C3, which drives the OLED over I2C and exports CSV to the ML pipeline](/case-studies/ble-environmental-sensor-node/arch-system.svg)
+*Figure: System context — the Android app talks to the ESP32-C3 over BLE/GATT (custom Environmental Node Service, 6 characteristics); the node drives an SSD1306 OLED over I2C and exports labeled CSV to the ML training pipeline.*
 
 The firmware is organized in three layers:
 
-```text
-+----------------------------------------------------------+
-| Application Core                                         |
-| - State machine, command handling, telemetry scheduling  |
-| - Display tick / page rotation                           |
-+----------------------+-----------------------------------+
-                       |
-+----------------------+-----------------------------------+
-| Services / Interfaces                                    |
-| - BLE Environmental Service (NimBLE GATT server)         |
-| - Sensor Provider Interface (simulated → BME280 in P9)   |
-| - Storage Config Interface (NVS)                         |
-| - Display Interface (SSD1306 over I2C)                   |
-+----------------------+-----------------------------------+
-                       |
-+----------------------+-----------------------------------+
-| Platform                                                 |
-| - ESP-IDF FreeRTOS                                       |
-| - NimBLE host/controller integration                     |
-| - NVS                                                    |
-| - GPIO/I2C/timers/logging                                |
-+----------------------------------------------------------+
-```
+![Firmware layering: Application Core over Services / Interfaces over the ESP-IDF Platform](/case-studies/ble-environmental-sensor-node/arch-layers.svg)
+*Figure: Firmware layering — the application core sits on service/interface abstractions (BLE, sensor provider with the BME280 swap point, storage, display), which sit on the ESP-IDF platform.*
 
 Five ESP-IDF components with explicit `REQUIRES` edges keep coupling visible: `app_core` (state machine, NVS config), `ble_env` (NimBLE GATT server, 6 characteristics), `env_sensor` (sensor provider with override and drift), `display` (SSD1306 driver and page rotator), and `tinyml_inference` (pure-C MLP with no internal dependencies). All components converge in `main/app_main.c`, which is the sole file in the main component.
 

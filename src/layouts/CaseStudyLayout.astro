@@ -52,13 +52,25 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     </header>
 
     {toc.length > 0 && (
-      <nav class="cs-toc mono" aria-label="Contents">
-        <p class="cs-toc-title">// contents</p>
-        <ol>
-          {toc.map((h) => (
-            <li class={`toc-d${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>
-          ))}
-        </ol>
+      <nav class="cs-toc term" aria-label="Contents">
+        <div class="term-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="term-title mono">contents</span>
+        </div>
+        <div class="term-body">
+          <p class="cs-toc-cmd mono">
+            <span class="prompt">karan@embedded</span>:<span class="out">~/projects</span><span class="prompt">$</span> grep '^##' case-study.md
+          </p>
+          <ol class="cs-toc-list mono">
+            {toc.map((h) => (
+              <li class={`toc-d${h.depth}`}>
+                <a href={`#${h.slug}`}><span class="cs-toc-mark">{h.depth === 2 ? '##' : '└─'}</span> {h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
       </nav>
     )}
 

@@ -16,6 +16,8 @@ describe('projects data', () => {
       expect(p.summary).toBeTruthy();
       expect(p.focus).toBeTruthy();
       expect(p.icon).toBeTruthy();
+      expect(p.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Number.isNaN(new Date(p.date).getTime())).toBe(false);
       expect(p.tags.length).toBeGreaterThan(0);
     }
   });

@@ -4,12 +4,15 @@ import ProjectCard from './ProjectCard.astro';
 import { projects } from '../data/projects';
 import { getCollection } from 'astro:content';
 
-const featured = projects.filter((p) => p.featured);
-const others = projects.filter((p) => !p.featured);
-const ordered = [...featured, ...others];
-
 const caseStudies = await getCollection('case-studies');
 const caseStudySlugs: Set<string> = new Set(caseStudies.map((c) => c.slug));
+
+// Case-study projects first, then everything else — each group newest-first by date.
+const byDateDesc = (a: (typeof projects)[number], b: (typeof projects)[number]) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime();
+const withCaseStudy = projects.filter((p) => caseStudySlugs.has(p.slug)).sort(byDateDesc);
+const withoutCaseStudy = projects.filter((p) => !caseStudySlugs.has(p.slug)).sort(byDateDesc);
+const ordered = [...withCaseStudy, ...withoutCaseStudy];
 ---
 <section id="projects" class="section">
   <div class="container">

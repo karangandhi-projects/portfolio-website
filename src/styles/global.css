@@ -177,3 +177,15 @@ h1 { letter-spacing: -0.02em; }
 .cs-body img { display: block; width: 100%; max-width: 420px; border: 1px solid var(--border); border-radius: 10px; margin: 18px auto 6px; }
 .cs-body img + em { display: block; text-align: center; color: var(--muted); font-size: 12.5px; margin-bottom: 22px; font-style: normal; }
 .card-bar .cs-badge { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 6px; }
+
+/* case study on-page index (table of contents) */
+.cs-toc { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 16px 20px; margin: 24px 0 4px; max-width: 820px; }
+.cs-toc-title { color: var(--accent); font-size: 12px; margin-bottom: 10px; }
+.cs-toc ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 28px; }
+.cs-toc li { font-size: 13px; margin: 3px 0; break-inside: avoid; }
+.cs-toc a { color: #b6bfca; text-decoration: none; }
+.cs-toc a:hover { color: var(--accent); }
+.cs-toc .toc-d3 { padding-left: 14px; }
+.cs-toc .toc-d3 a { color: var(--muted); font-size: 12.5px; }
+.cs-body h2, .cs-body h3 { scroll-margin-top: 16px; }
+@media (max-width: 640px) { .cs-toc ol { columns: 1; } }

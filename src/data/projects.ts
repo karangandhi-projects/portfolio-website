@@ -2,6 +2,7 @@ export type Project = {
   name: string;
   slug: string;
   url: string;
+  date: string; // ISO YYYY-MM-DD — repo creation date (from GitHub); drives newest-first ordering
   summary: string;
   focus: string;
   icon: string; // key into src/lib/icons.ts
@@ -15,6 +16,7 @@ export const projects: Project[] = [
     name: 'vnet-driver',
     slug: 'vnet-driver',
     url: 'https://github.com/karangandhi-projects/vnet-driver',
+    date: '2025-11-28',
     summary: 'A phase-based Linux virtual Ethernet driver using vnet0.',
     focus:
       'Shows real kernel-space network driver work: TX/RX paths, ring buffers, NAPI-style polling, statistics, ethtool support, and kernel/user-space debugging.',
@@ -27,6 +29,7 @@ export const projects: Project[] = [
     name: 'mini-ecu-v2',
     slug: 'mini-ecu-v2',
     url: 'https://github.com/karangandhi-projects/mini-ecu-v2',
+    date: '2025-11-28',
     summary: 'A virtual automotive ECU built on STM32F446RE.',
     focus:
       'An end-to-end embedded system: FreeRTOS tasks, CAN loopback telemetry, a UART CLI, logging, and a bootloader-oriented layout as a base for OTA experiments.',
@@ -39,6 +42,7 @@ export const projects: Project[] = [
     name: 'stm32-smart-sensor-hub',
     slug: 'stm32-smart-sensor-hub',
     url: 'https://github.com/karangandhi-projects/stm32-smart-sensor-hub',
+    date: '2025-12-02',
     summary: 'A modular STM32 sensor hub focused on firmware architecture and observability.',
     focus:
       'Peripheral-heavy firmware with a clean architecture: sensor abstraction, I2C/SPI backends, UART logging, and CLI-based observability.',
@@ -51,6 +55,7 @@ export const projects: Project[] = [
     name: 'stm32-virtual-vehicle-ecu',
     slug: 'stm32-virtual-vehicle-ecu',
     url: 'https://github.com/karangandhi-projects/stm32-virtual-vehicle-ecu',
+    date: '2025-11-27',
     summary: 'A modular STM32F4 virtual vehicle ECU with FreeRTOS, CAN, UART and a simple vehicle model.',
     focus:
       'Clean separation between drivers, RTOS tasks, application logic, and simulated vehicle behavior.',
@@ -63,6 +68,7 @@ export const projects: Project[] = [
     name: 'ble-environmental-sensor-node',
     slug: 'ble-environmental-sensor-node',
     url: 'https://github.com/karangandhi-projects/ble-environmental-sensor-node',
+    date: '2026-05-16',
     summary: 'A spec-driven BLE environmental sensor node using ESP32-C3, NimBLE and an OLED display.',
     focus:
       'BLE from an embedded perspective: GATT design, peripheral behavior, sensor publishing, and agent-buildable documentation.',
@@ -75,6 +81,7 @@ export const projects: Project[] = [
     name: 'Pseudo-Character-Device-Driver',
     slug: 'pseudo-character-device-driver',
     url: 'https://github.com/karangandhi-projects/Pseudo-Character-Device-Driver',
+    date: '2025-03-18',
     summary: 'A Linux pseudo character device driver implementing common file operations.',
     focus:
       'Understanding the Linux driver lifecycle, file-operation callbacks, and kernel/user-space interaction.',
@@ -87,6 +94,7 @@ export const projects: Project[] = [
     name: 'EE-6314-RTOS',
     slug: 'ee-6314-rtos',
     url: 'https://github.com/karangandhi-projects/EE-6314-RTOS',
+    date: '2025-02-22',
     summary: 'A real-time operating system built from scratch on the TI Tiva TM4C123G (ARM Cortex-M4).',
     focus:
       'Implements the core RTOS primitives — task scheduling, context switching, semaphores/mutexes and IPC — to understand RTOS internals from the ground up.',
@@ -99,6 +107,7 @@ export const projects: Project[] = [
     name: 'bluetooth-audio-manager-linux',
     slug: 'bluetooth-audio-manager-linux',
     url: 'https://github.com/karangandhi-projects/bluetooth-audio-manager-linux',
+    date: '2026-03-30',
     summary: 'A Linux utility for fixing and toggling Bluetooth audio profiles on PipeWire systems.',
     focus:
       'Built from a real usability problem; focused on scripting, automation, and Linux troubleshooting.',

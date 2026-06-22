@@ -4,7 +4,6 @@ const caseStudies = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    slug: z.string(), // must match the matching entry in src/data/projects.ts
     summary: z.string(),
     status: z.string(),
     platform: z.string(),

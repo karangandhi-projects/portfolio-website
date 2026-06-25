@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Projects from '../../components/Projects.astro';
+---
+<PageLayout
+  current="projects"
+  title="Karan Gandhi — Projects"
+  description="All embedded firmware, RTOS and Linux driver projects by Karan Gandhi, with status and validation notes."
+>
+  <Projects cmd="ls projects/ --all" title="All Projects" />
+</PageLayout>

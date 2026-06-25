@@ -97,6 +97,11 @@ a:hover { text-decoration: underline; }
 /* home qualcomm credibility card */
 .qc-section { padding: 28px 0; }
 
+/* home see-more + case-study callout */
+.see-more { padding: 8px 0 0; }
+.cs-callout-section { padding: 28px 0; }
+.cs-callout .card-bar { justify-content: flex-end; }
+
 /* grids */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }

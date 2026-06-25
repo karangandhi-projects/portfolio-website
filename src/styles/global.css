@@ -249,3 +249,15 @@ h1 { letter-spacing: -0.02em; }
 
 /* home CTA row */
 .see-more-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* case study: two-column with sticky TOC on desktop */
+@media (min-width: 900px) {
+  .cs-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: start; max-width: 1120px; }
+  .cs-grid .cs-toc { position: sticky; top: 72px; margin: 0; max-width: none; }
+  .cs-grid .cs-toc-list { columns: 1; }
+  .cs-main { min-width: 0; }
+}
+.cs-toc-list a.active { color: var(--accent); }
+.cs-toc-list a.active .cs-toc-mark { color: var(--accent); }
+/* themed case-study headings — terminal prompt marker */
+.cs-body h2::before { content: "$ "; color: var(--accent); font-family: var(--font-mono); font-weight: 400; }

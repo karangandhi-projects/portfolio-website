@@ -41,9 +41,10 @@ const latestPost = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
   <section class="section cs-callout-section">
     <div class="container">
+      <SectionHeader cmd="ls projects/ --case-study" title="Featured Case Study" />
       <a class="card cs-callout" href="/projects/ble-environmental-sensor-node">
         <div class="card-bar">
-          <span class="cs-badge">featured case study &rarr;</span>
+          <span class="cs-badge">read the case study &rarr;</span>
         </div>
         <div class="card-body">
           <h3 style="font-size:16px; margin-bottom:6px;">BLE Environmental Sensor Node</h3>

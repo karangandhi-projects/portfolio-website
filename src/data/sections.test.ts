@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { sections, crumbsFor } from './sections';
 
 describe('sections', () => {
-  it('exposes the six top-level tabs in order', () => {
+  it('exposes the seven top-level tabs in order', () => {
     expect(sections.map((s) => s.key)).toEqual([
-      'home', 'experience', 'projects', 'skills', 'ai', 'about',
+      'home', 'experience', 'projects', 'skills', 'ai', 'blog', 'about',
     ]);
   });
   it('every tab has an absolute href', () => {

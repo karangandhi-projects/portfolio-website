@@ -1,4 +1,4 @@
-export type SectionKey = 'home' | 'experience' | 'projects' | 'skills' | 'ai' | 'about';
+export type SectionKey = 'home' | 'experience' | 'projects' | 'skills' | 'ai' | 'blog' | 'about';
 
 export type SectionTab = { key: SectionKey; label: string; href: string };
 
@@ -8,6 +8,7 @@ export const sections: SectionTab[] = [
   { key: 'projects', label: 'projects', href: '/projects' },
   { key: 'skills', label: 'skills', href: '/skills' },
   { key: 'ai', label: 'ai', href: '/ai' },
+  { key: 'blog', label: 'blog', href: '/blog' },
   { key: 'about', label: 'about', href: '/about' },
 ];
 

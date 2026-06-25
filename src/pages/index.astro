@@ -4,6 +4,10 @@ import Hero from '../components/Hero.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import QualcommCard from '../components/QualcommCard.astro';
 import Projects from '../components/Projects.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { estimateReadingTime } from '../lib/readingTime';
 import { projects, type Project } from '../data/projects';
 
 // Fixed home order for the four featured cards (flagship BLE first).
@@ -17,6 +21,10 @@ const bySlug = new Map(projects.map((p) => [p.slug, p]));
 const featured = featuredOrder
   .map((slug) => bySlug.get(slug))
   .filter((p): p is Project => Boolean(p));
+
+// Newest non-draft post, surfaced on the home page.
+const latestPost = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
 ---
 <PageLayout current="home">
   <Hero />
@@ -44,4 +52,15 @@ const featured = featuredOrder
       </a>
     </div>
   </section>
+  {latestPost && (
+    <section class="section">
+      <div class="container">
+        <SectionHeader cmd="ls blog/ --latest" title="Latest Post" />
+        <BlogCard post={latestPost} readingTime={latestPost.data.readingTime ?? estimateReadingTime(latestPost.body)} />
+        <div class="see-more-row" style="margin-top:14px;">
+          <a class="btn btn-ghost" href="/blog">&rarr; all posts</a>
+        </div>
+      </div>
+    </section>
+  )}
 </PageLayout>

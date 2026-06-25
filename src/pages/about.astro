@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import EngineeringStyle from '../components/EngineeringStyle.astro';
+import AiEngineering from '../components/AiEngineering.astro';
+import Education from '../components/Education.astro';
+import Now from '../components/Now.astro';
+import Footer from '../components/Footer.astro';
+
+const subnav = [
+  { href: '#experience', label: 'experience' },
+  { href: '#projects', label: 'projects' },
+  { href: '#skills', label: 'skills' },
+  { href: '#ai', label: 'ai' },
+  { href: '#education', label: 'education' },
+];
+---
+<BaseLayout
+  title="Karan Gandhi — Full Work & Background"
+  description="Full experience, projects, skills, engineering style and AI-assisted workflow for Karan Gandhi, embedded firmware engineer (ex-Qualcomm)."
+>
+  <Header />
+  <nav class="subnav" aria-label="On this page">
+    <div class="container subnav-inner mono">
+      <a class="subnav-home" href="/">cd ~/</a>
+      {subnav.map((s) => <a class="subnav-link" href={s.href}>{s.label}</a>)}
+    </div>
+  </nav>
+  <main class="about-page">
+    <About />
+    <Experience />
+    <Projects cmd="ls projects/ --all" title="All Projects" />
+    <Skills />
+    <EngineeringStyle />
+    <AiEngineering />
+    <Education />
+    <Now />
+  </main>
+  <Footer />
+</BaseLayout>

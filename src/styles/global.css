@@ -211,3 +211,11 @@ h1 { letter-spacing: -0.02em; }
 .cs-toc-list .toc-d3 .cs-toc-mark { color: var(--muted); }
 .cs-body h2, .cs-body h3 { scroll-margin-top: 16px; }
 @media (max-width: 640px) { .cs-toc-list { columns: 1; } }
+
+/* /about sticky sub-nav */
+.subnav { position: sticky; top: 60px; z-index: 40; background: rgba(10,10,10,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.subnav-inner { display: flex; gap: 16px; align-items: center; height: 46px; font-size: 13px; overflow-x: auto; }
+.subnav-home { color: var(--accent); }
+.subnav-link { color: var(--muted); }
+.subnav-link:hover, .subnav-home:hover { color: var(--text); text-decoration: none; }
+.about-page section { scroll-margin-top: 120px; }

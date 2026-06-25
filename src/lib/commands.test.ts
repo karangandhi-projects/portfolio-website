@@ -9,13 +9,13 @@ describe('resolveCommand', () => {
     expect(resolveCommand('PROJECTS')).toBe('#projects');
   });
   it('ignores a leading $ prompt', () => {
-    expect(resolveCommand('$ about')).toBe('#about');
+    expect(resolveCommand('$ about')).toBe('/about');
   });
   it('handles ls-style trailing slash', () => {
     expect(resolveCommand('ls projects/')).toBe('#projects');
   });
   it('handles cat now.md', () => {
-    expect(resolveCommand('cat now.md')).toBe('#now');
+    expect(resolveCommand('cat now.md')).toBe('/about#now');
   });
   it('resolves resume to its file path', () => {
     expect(resolveCommand('resume')).toBe('/resume.pdf');

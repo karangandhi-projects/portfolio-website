@@ -151,14 +151,7 @@ a:hover { text-decoration: underline; }
 .cmd-input-wrap { display: flex; align-items: center; gap: 6px; margin-top: 12px; font-family: var(--font-mono); font-size: 13px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; }
 .cmd-input { background: transparent; border: none; color: var(--text); font-family: var(--font-mono); font-size: 13px; flex: 1; outline: none; }
 
-/* header / footer */
-.site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: rgba(10,10,10,.8); border-bottom: 1px solid var(--border); }
-.site-header .inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-.nav-links { display: flex; gap: 18px; font-family: var(--font-mono); font-size: 13px; }
-.nav-links a { color: var(--muted); } .nav-links a:hover { color: var(--text); }
-.header-icons { display: flex; gap: 12px; color: var(--muted); }
-.header-icons a { color: inherit; display: inline-flex; } .header-icons a:hover { color: var(--text); }
-@media (max-width: 640px) { .nav-links { display: none; } }
+/* footer */
 .site-footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-family: var(--font-mono); font-size: 12.5px; }
 
 h1 { letter-spacing: -0.02em; }
@@ -212,14 +205,6 @@ h1 { letter-spacing: -0.02em; }
 .cs-toc-list .toc-d3 .cs-toc-mark { color: var(--muted); }
 .cs-body h2, .cs-body h3 { scroll-margin-top: 16px; }
 @media (max-width: 640px) { .cs-toc-list { columns: 1; } }
-
-/* /about sticky sub-nav */
-.subnav { position: sticky; top: 60px; z-index: 40; background: rgba(10,10,10,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-.subnav-inner { display: flex; gap: 16px; align-items: center; height: 46px; font-size: 13px; overflow-x: auto; }
-.subnav-home { color: var(--accent); }
-.subnav-link { color: var(--muted); }
-.subnav-link:hover, .subnav-home:hover { color: var(--text); text-decoration: none; }
-.about-page section { scroll-margin-top: 120px; }
 
 /* persistent site nav */
 .site-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: rgba(10,10,10,.85); border-bottom: 1px solid var(--border); }

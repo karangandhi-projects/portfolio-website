@@ -9,6 +9,7 @@ export const commands: NavCommand[] = [
   { cmd: 'projects', label: 'projects', target: '/projects' },
   { cmd: 'skills', label: 'skills', target: '/skills' },
   { cmd: 'ai', label: 'ai', target: '/ai' },
+  { cmd: 'blog', label: 'blog', target: '/blog' },
   { cmd: 'experience', label: 'experience', target: '/experience' },
   { cmd: 'education', label: 'education', target: '/about#education' },
   { cmd: 'now', label: 'now', target: '/about#now' },

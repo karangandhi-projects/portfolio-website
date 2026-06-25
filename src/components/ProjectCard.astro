@@ -30,5 +30,18 @@ const ariaLabel = caseStudyPath
     <div style="margin-top:12px;">
       {project.tags.map((t) => <span class="tag">{t}</span>)}
     </div>
+    {(project.status || project.validation || project.evidence) && (
+      <div class="proof">
+        {project.status && (
+          <div class="proof-row"><span class="proof-k">status</span><span>{project.status}</span></div>
+        )}
+        {project.validation && (
+          <div class="proof-row"><span class="proof-k">validation</span><span>{project.validation}</span></div>
+        )}
+        {project.evidence && (
+          <div class="proof-row"><span class="proof-k">evidence</span><span>{project.evidence}</span></div>
+        )}
+      </div>
+    )}
   </div>
 </a>

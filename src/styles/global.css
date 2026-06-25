@@ -85,6 +85,10 @@ a:hover { text-decoration: underline; }
 .card-body { padding: 16px; }
 .card-body p { font-size: 14px; color: #b6bfca; }
 .why { font-size: 12.5px; color: var(--muted); margin-top: 10px; border-left: 2px solid var(--amber); padding-left: 10px; }
+/* project proof footer */
+.proof { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 12px; display: flex; flex-direction: column; gap: 6px; }
+.proof-row { display: flex; gap: 8px; color: #b6bfca; }
+.proof-k { color: var(--accent); min-width: 78px; }
 
 /* grids */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

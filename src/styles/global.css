@@ -239,3 +239,10 @@ h1 { letter-spacing: -0.02em; }
   .nav-tabs { width: 100%; }
   .crumb { font-size: 12px; overflow-x: auto; }
 }
+
+/* persistent footer contact */
+.footer-contact { padding-bottom: 18px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.footer-contact-cmd { font-size: 13px; margin-bottom: 12px; }
+.footer-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.footer-roles { font-size: 12.5px; }
+.footer-base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }

@@ -1,7 +1,7 @@
 export type NavCommand = {
   cmd: string;      // canonical command keyword
   label: string;    // chip label
-  target: string;   // '#anchor' for same-page scroll, or a URL/path to navigate
+  target: string;   // root-relative path ('/projects'), path+fragment ('/about#education'), or local asset ('/resume.pdf')
 };
 
 export const commands: NavCommand[] = [

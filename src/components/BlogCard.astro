@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'blog'>; readingTime: string; }
+const { post, readingTime } = Astro.props;
+const { title, summary, kind, date, tags } = post.data;
+const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<a class="card" href={`/blog/${post.slug}`} aria-label={`${title} — read post`}>
+  <div class="card-bar">
+    <span class="path"><span class="dir">~/blog/</span>{post.slug}.md</span>
+    <span class={`blog-badge${kind === 'note' ? ' blog-badge-note' : ''}`}>{kind}</span>
+  </div>
+  <div class="card-body">
+    <h3 class="blog-card-title">{title}</h3>
+    <p>{summary}</p>
+    <div class="blog-card-meta mono">
+      <span>{dateStr}</span>
+      <span class="blog-meta-sep">·</span>
+      <span>{readingTime}</span>
+    </div>
+    <div style="margin-top:12px;">
+      {tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </div>
+</a>

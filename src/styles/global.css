@@ -89,6 +89,11 @@ a:hover { text-decoration: underline; }
 .proof { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 12px; display: flex; flex-direction: column; gap: 6px; }
 .proof-row { display: flex; gap: 8px; color: #b6bfca; }
 .proof-k { color: var(--accent); min-width: 78px; }
+/* home proof strip */
+.proof-strip-section { padding: 24px 0 0; }
+.proof-strip-head { font-size: 14px; margin-bottom: 12px; }
+.proof-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+.proof-pill { font-size: 12px; padding: 6px 12px; border-radius: 7px; background: var(--surface-2); border: 1px solid var(--border); color: #7ee787; }
 
 /* grids */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

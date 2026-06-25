@@ -1,0 +1,22 @@
+---
+import Prompt from './Prompt.astro';
+
+// Facts only — derived from src/data/experience.ts. No unverified metrics.
+const pills = [
+  '3 yrs Qualcomm firmware',
+  'LTE / 5G modem',
+  'RTOS · drivers · power',
+  '~30% faster crash-log debug',
+  'STM32 · BLE · Linux driver projects',
+  'validation-first',
+  'open to roles',
+];
+---
+<section class="section proof-strip-section">
+  <div class="container">
+    <div class="proof-strip-head mono"><Prompt cmd="cat proof.txt" /></div>
+    <div class="proof-strip">
+      {pills.map((p) => <span class="proof-pill mono">{p}</span>)}
+    </div>
+  </div>
+</section>

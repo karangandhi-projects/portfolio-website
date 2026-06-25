@@ -14,6 +14,11 @@ So there is exactly **one** checkpoint: a local visual review right before posti
 preserves the standing "local visual review before deploy" rule
 ([[portfolio-review-deploy-prefs]]) while keeping everything else hands-off.
 
+> **`git push origin main` IS the deploy.** Vercel auto-builds and publishes the live site
+> from GitHub `main` on every push. There is no separate deploy step — so the preview review
+> in step 3 below is the deploy gate. **Never push without Karan's approval**, because the
+> push puts the post live immediately.
+
 If a post needs anything beyond a standard content file (new layout, schema change, custom
 styling), that is *not* routine — fall back to the normal review/approval flow for those parts.
 
@@ -78,6 +83,7 @@ npm run preview        # serves dist/ at http://localhost:4321/
 #   WAIT for his approval. Do not proceed past here without it.
 
 # 4. After approval: commit on a short-lived branch, merge to main, push (autonomous)
+#    NOTE: the push below auto-deploys to the live site via Vercel.
 git checkout -b blog/<slug>
 git add src/content/blog/<slug>.md
 git commit -m "content(blog): add post — <short title>"

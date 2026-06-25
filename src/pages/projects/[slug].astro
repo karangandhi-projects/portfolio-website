@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
-const { title, summary, status, platform, stack, tags, repoUrl } = entry.data;
+const { title, summary, status, platform, stack, tags, repoUrl, role, coreWork, validation } = entry.data;
 ---
 <CaseStudyLayout
   title={title}
@@ -22,7 +22,11 @@ const { title, summary, status, platform, stack, tags, repoUrl } = entry.data;
   stack={stack}
   tags={tags}
   repoUrl={repoUrl}
+  role={role}
+  coreWork={coreWork}
+  validation={validation}
   headings={headings}
+  slug={entry.slug}
 >
   <Content />
 </CaseStudyLayout>

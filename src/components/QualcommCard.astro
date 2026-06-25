@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import { experiences } from '../data/experience';
+
+const qc = experiences.find((e) => e.company.startsWith('Qualcomm')) ?? experiences[0];
+---
+<section class="section qc-section">
+  <div class="container">
+    <div class="card qc-card">
+      <div class="card-bar">
+        {qc.icon && (
+          <span class="ico" style="color:#c9d1d9; display:inline-flex;"><Icon name={qc.icon} size={18} /></span>
+        )}
+        <span class="path">Production firmware experience</span>
+        <span class="gh mono" style="margin-left:auto; font-size:12px;">{qc.dates}</span>
+      </div>
+      <div class="card-body">
+        <h3 style="font-size:16px; margin-bottom:6px;">{qc.company} — {qc.role}</h3>
+        <p class="measure">{qc.summary}</p>
+        <p style="margin-top:12px;"><a href="/experience">See full experience &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -23,14 +23,15 @@ const discipline = [
 ---
 <section id="ai" class="section">
   <div class="container">
-    <SectionHeader cmd="cat ai-native-workflow.md" title="AI-Assisted Engineering" />
+    <SectionHeader cmd="cat ai-native-workflow.md" title="Engineering-First, AI-Assisted" />
 
     <div class="card" style="padding: 22px 24px; margin-bottom:16px;">
-      <p style="margin-bottom:14px;">
-        I'm exploring AI-native workflows for embedded software development — where AI is
-        integrated across the full engineering lifecycle, not just code generation. I work with
-        <span class="mono accent">Claude</span> and <span class="mono accent">Codex</span>, progressing
-        from prompt engineering, to context engineering, to harness engineering.
+      <p class="measure" style="margin-bottom:14px;">
+        Spec-driven, documented, validation-first embedded development — with AI used as an
+        engineering assistant for planning, review, documentation, and workflow acceleration.
+        I'm an embedded engineer first: AI improves engineering discipline, it does not
+        replace understanding of timing, memory, hardware constraints, RTOS behavior, and
+        failure modes.
       </p>
       <div>
         {lifecycle.map((l) => <span class="tag">{l}</span>)}

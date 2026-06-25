@@ -1,31 +1,47 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import QualcommCard from '../components/QualcommCard.astro';
 import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
-import EngineeringStyle from '../components/EngineeringStyle.astro';
-import AiEngineering from '../components/AiEngineering.astro';
-import Experience from '../components/Experience.astro';
-import Education from '../components/Education.astro';
-import Now from '../components/Now.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import { projects, type Project } from '../data/projects';
+
+// Fixed home order for the four featured cards (flagship BLE first).
+const featuredOrder = [
+  'ble-environmental-sensor-node',
+  'mini-ecu-v2',
+  'vnet-driver',
+  'stm32-smart-sensor-hub',
+];
+const bySlug = new Map(projects.map((p) => [p.slug, p]));
+const featured = featuredOrder
+  .map((slug) => bySlug.get(slug))
+  .filter((p): p is Project => Boolean(p));
 ---
-<BaseLayout>
-  <Header />
-  <main>
-    <Hero />
-    <About />
-    <Projects />
-    <Skills />
-    <EngineeringStyle />
-    <AiEngineering />
-    <Experience />
-    <Education />
-    <Now />
-    <Contact />
-  </main>
-  <Footer />
-</BaseLayout>
+<PageLayout current="home">
+  <Hero />
+  <ProofStrip />
+  <QualcommCard />
+  <Projects items={featured} cmd="ls projects/ --featured" title="Featured Projects" />
+  <section class="section see-more">
+    <div class="container">
+      <div class="see-more-row">
+        <a class="btn btn-ghost" href="/experience">&rarr; experience</a>
+        <a class="btn btn-ghost" href="/projects">&rarr; all projects</a>
+      </div>
+    </div>
+  </section>
+  <section class="section cs-callout-section">
+    <div class="container">
+      <a class="card cs-callout" href="/projects/ble-environmental-sensor-node">
+        <div class="card-bar">
+          <span class="cs-badge">featured case study &rarr;</span>
+        </div>
+        <div class="card-body">
+          <h3 style="font-size:16px; margin-bottom:6px;">BLE Environmental Sensor Node</h3>
+          <p class="measure">Spec-driven ESP32-C3 BLE peripheral: custom GATT profile, MITM passkey pairing, on-device TinyML, and an Android companion app — with a full rapid bring-up &amp; I2C debugging narrative.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+</PageLayout>

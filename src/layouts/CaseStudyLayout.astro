@@ -1,7 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
 import Icon from '../components/Icon.astro';
 import Footer from '../components/Footer.astro';
+import type { Crumb } from '../data/sections';
 
 interface Heading {
   depth: number;
@@ -16,41 +18,24 @@ interface Props {
   stack: string[];
   tags: string[];
   repoUrl: string;
+  role?: string;
+  coreWork?: string;
+  validation?: string;
+  slug: string;
   headings?: Heading[];
 }
-const { title, summary, status, platform, stack, tags, repoUrl, headings = [] } = Astro.props;
+const { title, summary, status, platform, stack, tags, repoUrl, role, coreWork, validation, slug, headings = [] } = Astro.props;
 const pageTitle = `${title} — Case Study — Karan Gandhi`;
-// On-page index: top-level (##) sections and their (###) subsections.
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const crumbs: Crumb[] = [
+  { label: '~', href: '/' },
+  { label: 'projects', href: '/projects' },
+  { label: slug },
+];
 ---
 <BaseLayout title={pageTitle} description={summary}>
-  <main class="container cs">
-    <a class="cs-back mono" href="/#projects">cd ~/projects</a>
-
-    <header class="cs-head">
-      <div class="cs-meta mono">
-        <span class="accent">karan@embedded</span>:<span class="out">~/projects/</span><span class="prompt">cat case-study.md</span>
-      </div>
-      <h1>{title}</h1>
-      <p class="cs-summary">{summary}</p>
-
-      <dl class="cs-facts mono">
-        <div><dt>platform</dt><dd>{platform}</dd></div>
-        <div><dt>status</dt><dd>{status}</dd></div>
-        <div><dt>stack</dt><dd>{stack.join(' · ')}</dd></div>
-      </dl>
-
-      <div class="cs-cta">
-        <a class="btn btn-primary" href={repoUrl} target="_blank" rel="noopener">
-          <Icon name="github" size={16} /> View on GitHub
-        </a>
-      </div>
-
-      <div class="cs-tags">
-        {tags.map((t) => <span class="tag">{t}</span>)}
-      </div>
-    </header>
-
+  <SiteNav current="projects" crumbs={crumbs} />
+  <main class="container cs cs-grid">
     {toc.length > 0 && (
       <nav class="cs-toc term" aria-label="Contents">
         <div class="term-bar">
@@ -74,11 +59,64 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       </nav>
     )}
 
-    <article class="cs-body">
-      <slot />
-    </article>
+    <div class="cs-main">
+      <header class="cs-head">
+        <div class="cs-meta mono">
+          <span class="accent">karan@embedded</span>:<span class="out">~/projects/</span><span class="prompt">cat case-study.md</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="cs-summary">{summary}</p>
 
-    <a class="cs-back mono" href="/#projects">← back to all projects</a>
+        <dl class="cs-facts mono">
+          {role && <div><dt>role</dt><dd>{role}</dd></div>}
+          <div><dt>platform</dt><dd>{platform}</dd></div>
+          {coreWork && <div><dt>core work</dt><dd>{coreWork}</dd></div>}
+          {validation && <div><dt>validation</dt><dd>{validation}</dd></div>}
+          <div><dt>status</dt><dd>{status}</dd></div>
+          <div><dt>stack</dt><dd>{stack.join(' · ')}</dd></div>
+        </dl>
+
+        <div class="cs-cta">
+          <a class="btn btn-primary" href={repoUrl} target="_blank" rel="noopener">
+            <Icon name="github" size={16} /> View on GitHub
+          </a>
+        </div>
+
+        <div class="cs-tags">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      </header>
+
+      <article class="cs-body">
+        <slot />
+      </article>
+
+      <a class="cs-back mono" href="/projects">← back to all projects</a>
+    </div>
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.cs-toc-list a'));
+  const byId = new Map(
+    tocLinks.map((a) => [a.getAttribute('href')?.slice(1) ?? '', a]),
+  );
+  const targets = Array.from(
+    document.querySelectorAll<HTMLElement>('.cs-body h2[id], .cs-body h3[id]'),
+  );
+  if ('IntersectionObserver' in window && targets.length) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          tocLinks.forEach((a) => a.classList.remove('active'));
+          const link = byId.get((e.target as HTMLElement).id);
+          if (link) link.classList.add('active');
+        }
+      },
+      { rootMargin: '-72px 0px -70% 0px' },
+    );
+    targets.forEach((t) => obs.observe(t));
+  }
+</script>

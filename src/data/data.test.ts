@@ -27,8 +27,24 @@ describe('projects data', () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
 
-  it('has at least 6 featured projects', () => {
-    expect(projects.filter((p) => p.featured).length).toBeGreaterThanOrEqual(6);
+  it('marks exactly the four home-featured projects', () => {
+    const featured = projects.filter((p) => p.featured).map((p) => p.slug).sort();
+    expect(featured).toEqual(
+      [
+        'ble-environmental-sensor-node',
+        'mini-ecu-v2',
+        'stm32-smart-sensor-hub',
+        'vnet-driver',
+      ].sort(),
+    );
+  });
+
+  it('every featured project has status, validation and evidence', () => {
+    for (const p of projects.filter((x) => x.featured)) {
+      expect(p.status, `${p.slug} status`).toBeTruthy();
+      expect(p.validation, `${p.slug} validation`).toBeTruthy();
+      expect(p.evidence, `${p.slug} evidence`).toBeTruthy();
+    }
   });
 });
 

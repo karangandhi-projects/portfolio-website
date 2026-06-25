@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { estimateReadingTime } from '../../lib/readingTime';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<PageLayout
+  current="blog"
+  title="Karan Gandhi — Blog"
+  description="Engineering blog by Karan Gandhi — long-form writeups and short notes on firmware, RTOS internals, and embedded debugging."
+>
+  <section class="section">
+    <div class="container">
+      <SectionHeader cmd="ls blog/ --all" title="Engineering Blog" />
+      {posts.length === 0 ? (
+        <p class="muted mono">No posts yet.</p>
+      ) : (
+        <div class="blog-feed">
+          {posts.map((post) => (
+            <BlogCard post={post} readingTime={post.data.readingTime ?? estimateReadingTime(post.body)} />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

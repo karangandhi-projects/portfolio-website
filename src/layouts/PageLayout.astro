@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Footer from '../components/Footer.astro';
+import type { SectionKey, Crumb } from '../data/sections';
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: SectionKey;
+  crumbs?: Crumb[];
+}
+const { title, description, current = 'home', crumbs } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <SiteNav current={current} crumbs={crumbs} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

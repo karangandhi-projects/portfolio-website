@@ -34,7 +34,7 @@ const crumbs: Crumb[] = [
 ];
 ---
 <BaseLayout title={pageTitle} description={summary}>
-  <SiteNav crumbs={crumbs} />
+  <SiteNav current="projects" crumbs={crumbs} />
   <main class="container cs cs-grid">
     {toc.length > 0 && (
       <nav class="cs-toc term" aria-label="Contents">

@@ -246,3 +246,6 @@ h1 { letter-spacing: -0.02em; }
 .footer-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
 .footer-roles { font-size: 12.5px; }
 .footer-base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* home CTA row */
+.see-more-row { display: flex; gap: 10px; flex-wrap: wrap; }

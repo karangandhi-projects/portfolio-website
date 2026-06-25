@@ -4,7 +4,7 @@ import { commands } from '../data/nav';
 <div class="cmd-nav">
   <div class="chips">
     {commands.map((c) => (
-      <a class="chip" href={c.target} {...(c.target.startsWith('#') ? {} : { target: '_blank', rel: 'noopener' })}>{c.label}</a>
+      <a class="chip" href={c.target} {...(/^https?:/.test(c.target) ? { target: '_blank', rel: 'noopener' } : {})}>{c.label}</a>
     ))}
   </div>
   <label class="cmd-input-wrap" for="cmd-input">

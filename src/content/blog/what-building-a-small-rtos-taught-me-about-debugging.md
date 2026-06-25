@@ -1,6 +1,5 @@
 ---
 title: 'What Building a Small RTOS Taught Me About Debugging'
-slug: 'what-building-a-small-rtos-taught-me-about-debugging'
 summary: "Building a small RTOS on a Cortex-M4 taught me that firmware debugging isn't about finding the wrong line — it's about understanding system behavior over time."
 kind: 'article'
 date: 2026-06-26

@@ -20,6 +20,9 @@ describe('resolveCommand', () => {
   it('resolves resume to its file path', () => {
     expect(resolveCommand('resume')).toBe('/resume.pdf');
   });
+  it('resolves the blog command', () => {
+    expect(resolveCommand('blog')).toBe('/blog');
+  });
   it('returns null for unknown input', () => {
     expect(resolveCommand('rm -rf /')).toBeNull();
   });

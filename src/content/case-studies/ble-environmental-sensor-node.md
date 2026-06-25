@@ -3,6 +3,9 @@ title: 'BLE Environmental Sensor Node'
 slug: 'ble-environmental-sensor-node'
 summary: 'A spec-driven BLE peripheral on ESP32-C3 with a custom GATT profile, on-device TinyML, an OLED display, and a Kotlin/Compose Android companion app.'
 status: 'v1.0.0 — working prototype'
+role: 'Firmware + Android companion app + documentation + validation'
+coreWork: 'Custom GATT profile, notifications, MITM passkey pairing, sensor override, TinyML classification'
+validation: '62 Unity tests, 25-case manual matrix, nRF Connect verification'
 platform: 'ESP32-C3 (RISC-V, 160 MHz)'
 stack: ['ESP-IDF v5.2.3', 'NimBLE', 'C', 'TinyML', 'Kotlin / Jetpack Compose', 'SSD1306 OLED']
 tags: ['BLE', 'GATT', 'ESP32-C3', 'NimBLE', 'TinyML', 'Android']
@@ -117,6 +120,20 @@ MITM Passkey Display pairing is handled natively: on first connect the OLED show
 
 ![Sensor override controls](/case-studies/ble-environmental-sensor-node/android_app_sensor_override.jpeg)
 *Figure: Injecting real readings via the Sensor Override screen.*
+
+## Rapid BLE Bring-Up and I2C Sensor Validation
+
+This project began as a focused two-week BLE learning sprint. I learned BLE fundamentals, implemented a custom GATT-based environmental sensor node on ESP32-C3 using ESP-IDF and NimBLE, documented the architecture, and prepared a working demo with OLED display feedback.
+
+During a live hardware integration exercise, I extended the project from simulated temperature values to a real I2C temperature sensor. The firmware integration path was correct, but the first sensor did not respond during I2C address discovery.
+
+I debugged the issue systematically instead of assuming a code problem. I verified the wiring and electrical connections with a multimeter, scanned the full valid I2C address range, and tested the address-select line in multiple configurations: pulled high, floating, and connected to ground. The sensor still did not acknowledge on the bus.
+
+After receiving a replacement sensor, I configured the address-select line to 3.3V, repeated the integration, and the new sensor responded correctly. I completed the firmware integration and demonstrated live temperature readings flowing from the I2C sensor into the BLE data path.
+
+I also independently configured an unfamiliar logic analyzer, installed the required software, connected the probes, captured I2C transactions, and identified where the temperature data was transferred on the bus.
+
+This exercise validated my ability to learn quickly, integrate real hardware under pressure, debug firmware-versus-hardware issues systematically, and use unfamiliar lab tools independently.
 
 ## Debugging challenges
 

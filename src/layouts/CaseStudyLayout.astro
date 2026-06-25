@@ -12,13 +12,16 @@ interface Props {
   title: string;
   summary: string;
   status: string;
+  role?: string;
+  coreWork?: string;
+  validation?: string;
   platform: string;
   stack: string[];
   tags: string[];
   repoUrl: string;
   headings?: Heading[];
 }
-const { title, summary, status, platform, stack, tags, repoUrl, headings = [] } = Astro.props;
+const { title, summary, status, platform, stack, tags, repoUrl, role, coreWork, validation, headings = [] } = Astro.props;
 const pageTitle = `${title} — Case Study — Karan Gandhi`;
 // On-page index: top-level (##) sections and their (###) subsections.
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
@@ -35,7 +38,10 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       <p class="cs-summary">{summary}</p>
 
       <dl class="cs-facts mono">
+        {role && <div><dt>role</dt><dd>{role}</dd></div>}
         <div><dt>platform</dt><dd>{platform}</dd></div>
+        {coreWork && <div><dt>core work</dt><dd>{coreWork}</dd></div>}
+        {validation && <div><dt>validation</dt><dd>{validation}</dd></div>}
         <div><dt>status</dt><dd>{status}</dd></div>
         <div><dt>stack</dt><dd>{stack.join(' · ')}</dd></div>
       </dl>

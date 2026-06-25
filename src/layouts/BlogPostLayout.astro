@@ -1,0 +1,111 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Footer from '../components/Footer.astro';
+import type { Crumb } from '../data/sections';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+interface Props {
+  title: string;
+  summary: string;
+  kind: 'article' | 'note';
+  date: Date;
+  tags: string[];
+  readingTime: string;
+  slug: string;
+  headings?: Heading[];
+}
+const { title, summary, kind, date, tags, readingTime, slug, headings = [] } = Astro.props;
+const pageTitle = `${title} — Blog — Karan Gandhi`;
+const toc = kind === 'article' ? headings.filter((h) => h.depth === 2 || h.depth === 3) : [];
+const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const crumbs: Crumb[] = [
+  { label: '~', href: '/' },
+  { label: 'blog', href: '/blog' },
+  { label: slug },
+];
+---
+<BaseLayout title={pageTitle} description={summary}>
+  <SiteNav current="blog" crumbs={crumbs} />
+  <main class={`container cs${toc.length > 0 ? ' cs-grid' : ''}`}>
+    {toc.length > 0 && (
+      <nav class="cs-toc term" aria-label="Contents">
+        <div class="term-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="term-title mono">contents</span>
+        </div>
+        <div class="term-body">
+          <p class="cs-toc-cmd mono">
+            <span class="prompt">karan@embedded</span>:<span class="out">~/blog</span><span class="prompt">$</span> grep '^##' post.md
+          </p>
+          <ol class="cs-toc-list mono">
+            {toc.map((h) => (
+              <li class={`toc-d${h.depth}`}>
+                <a href={`#${h.slug}`}><span class="cs-toc-mark">{h.depth === 2 ? '##' : '└─'}</span> {h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+    )}
+
+    <div class="cs-main">
+      <header class="cs-head">
+        <div class="cs-meta mono">
+          <span class="accent">karan@embedded</span>:<span class="out">~/blog/</span><span class="prompt">cat post.md</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="cs-summary">{summary}</p>
+
+        <div class="blog-meta mono">
+          <span class={`blog-badge${kind === 'note' ? ' blog-badge-note' : ''}`}>{kind}</span>
+          <span class="blog-meta-sep">·</span>
+          <span>{dateStr}</span>
+          <span class="blog-meta-sep">·</span>
+          <span>{readingTime}</span>
+        </div>
+
+        <div class="cs-tags">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      </header>
+
+      <article class="cs-body">
+        <slot />
+      </article>
+
+      <a class="cs-back mono" href="/blog">← back to all posts</a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.cs-toc-list a'));
+  const byId = new Map(
+    tocLinks.map((a) => [a.getAttribute('href')?.slice(1) ?? '', a]),
+  );
+  const targets = Array.from(
+    document.querySelectorAll<HTMLElement>('.cs-body h2[id], .cs-body h3[id]'),
+  );
+  if ('IntersectionObserver' in window && targets.length) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          tocLinks.forEach((a) => a.classList.remove('active'));
+          const link = byId.get((e.target as HTMLElement).id);
+          if (link) link.classList.add('active');
+        }
+      },
+      { rootMargin: '-72px 0px -70% 0px' },
+    );
+    targets.forEach((t) => obs.observe(t));
+  }
+</script>

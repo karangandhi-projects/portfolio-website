@@ -1,0 +1,33 @@
+---
+import { sections, crumbsFor, type SectionKey, type Crumb } from '../data/sections';
+
+interface Props {
+  current?: SectionKey;
+  crumbs?: Crumb[]; // override (e.g. case studies with a deeper path)
+}
+const { current = 'home', crumbs } = Astro.props;
+const path = crumbs ?? crumbsFor(current);
+---
+<header class="site-nav">
+  <div class="container site-nav-inner">
+    <div class="crumb mono">
+      <a class="crumb-user" href="/">karan@embedded</a><span class="crumb-sep">:</span>{path.map((c, i) => (
+        <Fragment>
+          {i > 0 && <span class="crumb-slash">/</span>}
+          {c.href
+            ? <a class="crumb-seg" href={c.href}>{c.label}</a>
+            : <span class="crumb-seg crumb-current">{c.label}</span>}
+        </Fragment>
+      ))}<span class="crumb-dollar">$</span>
+    </div>
+    <nav class="nav-tabs mono" aria-label="Sections">
+      {sections.map((s) => (
+        <a
+          class={`nav-tab${s.key === current ? ' active' : ''}`}
+          href={s.href}
+          aria-current={s.key === current ? 'page' : undefined}
+        >{s.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
